@@ -6,5 +6,5 @@ export const store:any = {
         "username":"",
         "role":""
     },
-    baseUrl:"http://localhost:7777/"
+    backendUrl:"http://localhost:7777/"
 }

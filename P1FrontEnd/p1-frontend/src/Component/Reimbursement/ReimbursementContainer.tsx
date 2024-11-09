@@ -9,7 +9,6 @@ import { store } from "../../globalData/store"
 export const ReimbursementContainer:React.FC = () => {
 
     const[reim,setreim] = useState([])
-        // TODO: navbar for navigation
 
     //useEffect that calls the function
     useEffect(()=>{
@@ -18,12 +17,22 @@ export const ReimbursementContainer:React.FC = () => {
     
     //get reimbursements by userId by axios GET request
     const getReimbursementsById = async () =>{
-        //hardcoded id for now but id should be the id of the logged in user 
-        const response = await axios.get("http://localhost:7777/reimbursements/user/" + store.loggedInUser.userId)
+        //users will only get their own Reimbursements
+        if(store.loggedInUser.role == 'user'){ 
+            const response = await axios.get(store.backendUrl + "reimbursements/user/" + store.loggedInUser.userId)
+            //populate the pets state object
+            setreim(response.data)
+            console.log(response.data)
+        }
+        //admins will get all reimbursements
+        else if(store.loggedInUser.role == 'admin'){ 
+            const response = await axios.get(store.backendUrl + "reimbursements/")
+            //populate the pets state object
+            setreim(response.data)
+            console.log(response.data)
+        }
 
-        //populate the pets state object
-        setreim(response.data)
-        console.log(response.data)
+        
 
     }
     const navigate = useNavigate()
@@ -35,6 +44,7 @@ export const ReimbursementContainer:React.FC = () => {
             </div>
             <div>
                 <Button className="btn-dark" onClick={()=>navigate("/")}>Go Back to Login</Button>
+                <Button className="btn-dark" onClick={()=>navigate("/newReimbursements")}>Make a new Reimbursement</Button>
             </div>
         </Container>
 

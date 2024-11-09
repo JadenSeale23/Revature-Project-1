@@ -14,6 +14,7 @@ export const Register:React.FC = () => {
         username:"",
         password:""
     })
+    
     const storeValues = (input:any) =>{
         const name = input.target.name
         const value = input.target.value

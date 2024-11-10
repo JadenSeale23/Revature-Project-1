@@ -7,6 +7,7 @@ import { Register } from './Component/LoginRegister/Register';
 import 'bootstrap/dist/css/bootstrap.css';
 import { ReimbursementContainer } from './Component/Reimbursement/ReimbursementContainer';
 import { NewReimbursement } from './Component/Reimbursement/NewReimbursement';
+import { ChangeStatus } from './Component/Reimbursement/ChangeStatus';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/register" element = {<Register/>}/>
           <Route path="/reimbursements" element = {<ReimbursementContainer/>}/>
           <Route path="/newReimbursements" element = {<NewReimbursement/>}/> 
+          <Route path="/changeStatus" element = {<ChangeStatus/>}/> 
         </Routes>
       </BrowserRouter>
     </div>

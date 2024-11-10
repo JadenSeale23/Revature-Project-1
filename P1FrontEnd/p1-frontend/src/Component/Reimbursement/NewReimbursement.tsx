@@ -31,11 +31,12 @@ export const NewReimbursement = () =>{
     }
 
     const navigate = useNavigate()
+    const username = store.loggedInUser.username; 
 
     return(
         <Container className="mx-auto my-2">
         <div>
-            <h1>{store.loggedInUser.role == 'user' ? 'Welcome User, Claim a New Reimbursement': 'Welcome Admin, Create a New Reimbursement'}</h1>
+            <h1>{store.loggedInUser.role === 'user' ? 'Welcome' + {username} + ', Claim ': 'Welcome Admin, Create '}a New Reimbursement</h1>
             <div>
                 <Form.Control
                     type="textarea"
@@ -53,7 +54,7 @@ export const NewReimbursement = () =>{
                 />
             </div>
 
-            {store.loggedInUser?.role == "admin" && (<><div>
+            {store.loggedInUser?.role === "admin" && (<><div>
                     <Form.Select name="status" onChange={storeValues}>
                         <option>Status</option>
                         <option value="PENDING">PENDING</option>

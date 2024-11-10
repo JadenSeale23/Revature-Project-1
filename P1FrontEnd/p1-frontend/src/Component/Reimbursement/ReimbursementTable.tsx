@@ -9,6 +9,8 @@ export const ReimbursementTable:React.FC<{reimbursements:any[]}> = ({reimburseme
                 <thead>
                     <tr>
                         <th>Reimbursement ID</th>
+                        <th>User ID</th>
+                        <th>Username</th>
                         <th>Description</th>
                         <th>Amount</th>
                         <th>Status</th>
@@ -18,8 +20,10 @@ export const ReimbursementTable:React.FC<{reimbursements:any[]}> = ({reimburseme
                     {reimbursements.map((reim:any) => (
                         <tr>
                             <td>{reim.reimId}</td>
+                            <td>{reim.user.userId}</td>
+                            <td>{reim.user.username}</td>
                             <td>{reim.description}</td>
-                            <td>{reim.amount}</td>
+                            <td>${reim.amount.toFixed(2)}</td>
                             <td>{reim.status}</td>
                         </tr>
                     ))}

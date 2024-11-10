@@ -68,5 +68,15 @@ public class ReimbursementService {
         return rDAO.findByUserUserId(userId);
     }
 
+    public Reimbursement updateStatus(int reimId, String newStatus){
+        //Get User by Id to see if it exists otherwise throw an IllegalArgumentException
+        Reimbursement r = rDAO.findById(reimId).orElseThrow(() -> new IllegalArgumentException("No Reimbursement found with id: " + reimId));
+
+        //set the new role
+        r.setStatus(newStatus);
+
+        //Save the new User with the updated role and return it
+        return rDAO.save(r);
+    }
 
 }

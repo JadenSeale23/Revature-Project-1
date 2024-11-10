@@ -47,11 +47,19 @@ public class ReimbursementController{
         return ResponseEntity.ok(rService.getReimbursementsByUserId(userId));
     }
 
+    @PatchMapping("/{reimId}")
+    public ResponseEntity<Reimbursement> setStatus(@PathVariable int reimId, @RequestBody String newStatus){
+        newStatus = newStatus.substring(14, newStatus.length()-2);
+        return ResponseEntity.status(202).body(rService.updateStatus(reimId, newStatus));
+    }
+
     //Exception Handler (stole this from the UserController)
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<String> handleIllegalArgument(IllegalArgumentException e){
         //Return a 400 (BAD REQUEST) status code with the exception message
         return ResponseEntity.status(400).body(e.getMessage());
     }
+
+
 
 }

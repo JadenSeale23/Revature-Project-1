@@ -6,7 +6,7 @@ package com.revature.models.DTOs;
 public class ReimbursementDTO {
 
     private String description;
-    private int amount;
+    private double amount;
     private String status;
     private int userId;
 
@@ -15,7 +15,7 @@ public class ReimbursementDTO {
     public ReimbursementDTO() {
     }
 
-    public ReimbursementDTO(String description, int amount, String status, int userId) {
+    public ReimbursementDTO(String description, double amount, String status, int userId) {
         this.description = description;
         this.amount = amount;
         this.status = status;
@@ -30,11 +30,11 @@ public class ReimbursementDTO {
         this.description = description;
     }
 
-    public int getAmount(){
+    public double getAmount(){
         return amount;
     }
 
-    public void setAmount(int amount){
+    public void setAmount(double amount){
         this.amount = amount;
     }
 

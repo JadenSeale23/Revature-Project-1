@@ -19,14 +19,14 @@ export const ReimbursementContainer:React.FC = () => {
     //get reimbursements by userId by axios GET request
     const getReimbursements = async () =>{
         //users will only get their own Reimbursements
-        if(store.loggedInUser.role == 'user'){ 
+        if(store.loggedInUser.role === 'user'){ 
             const response = await axios.get(store.backendUrl + "reimbursements/user/" + store.loggedInUser.userId)
             //populate the pets state object
             setreim(response.data)
             console.log(response.data)
         }
         //admins will get all reimbursements
-        else if(store.loggedInUser.role == 'admin'){ 
+        else if(store.loggedInUser.role === 'admin'){ 
             const response = await axios.get(store.backendUrl + "reimbursements")
             //populate the pets state object
             setreim(response.data)

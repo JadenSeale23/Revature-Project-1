@@ -53,6 +53,16 @@ public class ReimbursementController{
         return ResponseEntity.status(202).body(rService.updateStatus(reimId, newStatus));
     }
 
+    @GetMapping("/pending")
+    public ResponseEntity<List<Reimbursement>> getPendingReimbursements() {
+        return ResponseEntity.ok(rService.getAllPendingReimbursements());
+    }
+
+    @GetMapping("/pending/{userId}")
+    public ResponseEntity<List<Reimbursement>> getPendingReimbursementsByUserId(@PathVariable int userId) {
+        return ResponseEntity.ok(rService.getPendingReimbursementsByUserId(userId));
+    }
+
     //Exception Handler (stole this from the UserController)
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<String> handleIllegalArgument(IllegalArgumentException e){

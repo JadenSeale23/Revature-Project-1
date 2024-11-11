@@ -79,4 +79,13 @@ public class ReimbursementService {
         return rDAO.save(r);
     }
 
+    public List<Reimbursement> getAllPendingReimbursements() {
+        return rDAO.findByStatus("PENDING");
+    }
+
+    public List<Reimbursement> getPendingReimbursementsByUserId(int userId) {
+        User u = uDAO.findById(userId).orElseThrow(() -> new IllegalArgumentException("No user found with id: " + userId));
+        return rDAO.findByStatusAndUserUserId("PENDING", userId);
+    }
+
 }

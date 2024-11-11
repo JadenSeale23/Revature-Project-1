@@ -21,7 +21,7 @@ export const NewReimbursement = () =>{
 
     //sendReim function that sends description/amount/status/userId to backend
     const sendReim = async () =>{
-        if(store.loggedInUser.role == "user"){
+        if(store.loggedInUser.role === "user"){
             setReim((reim) => ({...reim, status:"PENDING"}))
             setReim((reim)=>({...reim, userId:store.loggedInUser.userId}))
         }
@@ -36,7 +36,7 @@ export const NewReimbursement = () =>{
     return(
         <Container className="mx-auto my-2">
         <div>
-            <h1>{store.loggedInUser.role === 'user' ? 'Welcome' + {username} + ', Claim ': 'Welcome Admin, Create '}a New Reimbursement</h1>
+            <h1>{store.loggedInUser.role === 'user' ? 'Welcome' + {username} + ', Claim ' : 'Welcome Admin, Create '}a New Reimbursement</h1>
             <div>
                 <Form.Control
                     type="textarea"

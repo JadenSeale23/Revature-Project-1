@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { ReimbursementContainer } from './Component/Reimbursement/ReimbursementContainer';
 import { NewReimbursement } from './Component/Reimbursement/NewReimbursement';
 import { ChangeStatus } from './Component/Reimbursement/ChangeStatus';
+import { PendingReimbursementContainer } from './Component/Reimbursement/PendingReimbursementContainer';
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
           <Route path="/register" element = {<Register/>}/>
           <Route path="/reimbursements" element = {<ReimbursementContainer/>}/>
           <Route path="/newReimbursements" element = {<NewReimbursement/>}/> 
-          <Route path="/changeStatus" element = {<ChangeStatus/>}/> 
+          <Route path="/changeStatus" element = {<ChangeStatus/>}/>
+          <Route path="/pendingReimbursements" element = {<PendingReimbursementContainer/>}/>  
         </Routes>
       </BrowserRouter>
     </div>

@@ -21,7 +21,7 @@ export const PendingReimbursementContainer:React.FC = () => {
     const getReimbursements = async () =>{
         //users will only get their own pending reimbursements
         if(store.loggedInUser.role === 'user'){ 
-            const response = await axios.get(store.backendUrl + "reimbursements/pending" + store.loggedInUser.userId)
+            const response = await axios.get(store.backendUrl + "reimbursements/pending/" + store.loggedInUser.userId)
             //populate the pets state object
             setreim(response.data)
             console.log(response.data)

@@ -9,7 +9,7 @@ export const NewReimbursement = () =>{
     const[reim, setReim] = useState({
         description:"",
         amount: 0,
-        status:"PENDING",
+        status:"",
         userId: 0
     })
 
@@ -21,13 +21,21 @@ export const NewReimbursement = () =>{
 
     //sendReim function that sends description/amount/status/userId to backend
     const sendReim = async () =>{
-        if(store.loggedInUser.role === "user"){
-            setReim((reim) => ({...reim, status:"PENDING"}))
-            setReim((reim)=>({...reim, userId:store.loggedInUser.userId}))
-        }
-        const response = await axios.post(store.backendUrl + "reimbursements", reim)
+        let updatedReim = { ...reim };
+
+    // Check user role and set fields accordingly
+    if (store.loggedInUser.role === "user") {
+        updatedReim = {
+            ...updatedReim,
+            status: "PENDING",
+            userId: store.loggedInUser.userId,
+        };
+    }
+        console.log(updatedReim.status)
+        console.log(updatedReim.userId)
+        const response = await axios.post(store.backendUrl + "reimbursements", updatedReim)
         .then(() =>{alert("success!")})
-        .catch((error)=>{alert("Failed! " + error.message)})
+        .catch((error)=>{alert("Failed to make a new Reimbursement! " + error.message)})
     }
 
     const navigate = useNavigate()
@@ -36,7 +44,7 @@ export const NewReimbursement = () =>{
     return(
         <Container className="mx-auto my-2">
         <div>
-            <h1>{store.loggedInUser.role === 'user' ? 'Welcome' + {username} + ', Claim ' : 'Welcome Admin, Create '}a New Reimbursement</h1>
+            <h1>{store.loggedInUser.role === 'user' ? 'Welcome ' + username + ', Claim ' : 'Welcome Admin, Create '}a New Reimbursement</h1>
             <div>
                 <Form.Control
                     type="textarea"

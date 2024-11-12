@@ -9,6 +9,8 @@ import { ReimbursementContainer } from './Component/Reimbursement/ReimbursementC
 import { NewReimbursement } from './Component/Reimbursement/NewReimbursement';
 import { ChangeStatus } from './Component/Reimbursement/ChangeStatus';
 import { PendingReimbursementContainer } from './Component/Reimbursement/PendingReimbursementContainer';
+import { UserContainer } from './Component/User/UserContainer';
+import { DeleteUser } from './Component/User/DeleteUser';
 
 function App() {
   return (
@@ -20,7 +22,9 @@ function App() {
           <Route path="/reimbursements" element = {<ReimbursementContainer/>}/>
           <Route path="/newReimbursements" element = {<NewReimbursement/>}/> 
           <Route path="/changeStatus" element = {<ChangeStatus/>}/>
-          <Route path="/pendingReimbursements" element = {<PendingReimbursementContainer/>}/>  
+          <Route path="/pendingReimbursements" element = {<PendingReimbursementContainer/>}/>
+          <Route path="/users" element = {<UserContainer/>}/>
+          <Route path="/deleteUser" element = {<DeleteUser/>}/>
         </Routes>
       </BrowserRouter>
     </div>

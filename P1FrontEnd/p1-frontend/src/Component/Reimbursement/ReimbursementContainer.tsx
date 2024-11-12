@@ -4,6 +4,7 @@ import { Button, Container } from "react-bootstrap"
 import { ReimbursementTable } from "./ReimbursementTable"
 import { useNavigate } from "react-router-dom"
 import { store } from "../../globalData/store"
+import { UserReimbursementTable } from "./UserReimbursementTable"
 
 
 
@@ -42,13 +43,15 @@ export const ReimbursementContainer:React.FC = () => {
         <Container>
             <div>
                 <h3 className="text-center">{role === 'user' ? username + "'s Reimbursements": 'All Reimbursements'}</h3>
-                <ReimbursementTable reimbursements={reim}></ReimbursementTable>
+                {role === 'admin' && <ReimbursementTable reimbursements={reim}></ReimbursementTable>}
+                {role === 'user' && <UserReimbursementTable reimbursements={reim}></UserReimbursementTable>}
             </div>
             <div>
                 <Button className="my-3 m-1 btn-dark" onClick={()=>navigate("/")}>Go Back to Login</Button>
                 <Button className="m-1 btn-dark" onClick={()=>navigate("/newReimbursements")}>Make a new Reimbursement</Button>
                 <Button className="m-1 btn-dark" onClick={()=>navigate("/pendingReimbursements")}>See Pending Reimbursements</Button>
                 {role === "admin" && <Button className="m-1 btn-dark" onClick={()=>navigate("/changeStatus")}>Change Reimbursement Status</Button>}
+                {role === "admin" && <Button className="m-1 btn-dark" onClick={()=>navigate("/users")}>View all users</Button>}
             </div>
         </Container>
 

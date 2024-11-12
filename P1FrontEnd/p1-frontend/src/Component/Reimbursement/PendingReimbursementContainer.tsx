@@ -5,6 +5,7 @@ import { ReimbursementTable } from "./ReimbursementTable"
 import { useNavigate } from "react-router-dom"
 import { store } from "../../globalData/store"
 import { PendingReimbursementTable } from "./PendingReimbursementTable"
+import { UserPendingReimbursementTable } from "./UserPendingReimbursementTable"
 
 
 
@@ -41,7 +42,8 @@ export const PendingReimbursementContainer:React.FC = () => {
         <Container>
             <div>
                 <h3 className="text-center">{role === 'user' ? username + "'s Pending Reimbursements": 'All Pending Reimbursements'}</h3>
-                <PendingReimbursementTable reimbursements={reim}></PendingReimbursementTable>
+                {role === 'admin' && <PendingReimbursementTable reimbursements={reim}></PendingReimbursementTable>}
+                {role === 'user' && <UserPendingReimbursementTable reimbursements={reim}></UserPendingReimbursementTable>}
             </div>
             <div>
                 <Button className="btn-dark" onClick={()=>navigate("/")}>Go Back to Login</Button>

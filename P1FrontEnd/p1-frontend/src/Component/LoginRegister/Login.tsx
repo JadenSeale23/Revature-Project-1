@@ -46,7 +46,7 @@ export const Login:React.FC = () => {
         /*Bootstrap gives us this Container element that does some default padding and centering*/
         <Container> 
 
-            <h1>Welcome to the Pet Shop</h1>
+            <h1>Welcome to the ReimCorp: Your Money on Your Time!</h1>
             <h3>Please Log In:</h3>
                 
                 <div>
@@ -68,7 +68,7 @@ export const Login:React.FC = () => {
                 </div>
                 
 
-            <Button className="btn-success m-1" onClick={login}>Login</Button>
+            <Button className="btn-dark m-1" onClick={login}>Login</Button>
             <Button className="btn-dark" onClick={()=>navigate("/register")}>Register</Button>
         </Container>
     )
